@@ -5,20 +5,20 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { ShipmentsComponent } from './shipments/shipments.component';
+import { OrdersComponent } from './orders/orders.component';
 
-import { ShipmentsService } from './shipments.service';
+import { OrdersService } from './services/orders.service';
 
 // Define the routes
 const ROUTES = [
   {
     path: '',
-    redirectTo: 'shipments',
+    redirectTo: 'orders',
     pathMatch: 'full'
   },
   {
-    path: 'shipments',
-    component: ShipmentsComponent
+    path: 'orders',
+    component: OrdersComponent
   }
 ];
 
@@ -26,7 +26,7 @@ const ROUTES = [
 @NgModule({
   declarations: [
     AppComponent,
-    ShipmentsComponent
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +34,7 @@ const ROUTES = [
     HttpModule,
     RouterModule.forRoot(ROUTES) // Add routes to the app
   ],
-  providers: [ShipmentsService],
+  providers: [OrdersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

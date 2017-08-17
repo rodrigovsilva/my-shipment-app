@@ -4,14 +4,13 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class ShipmentsService {
+export class OrdersService {
 
   constructor(private http: Http) { }
 
-  // Get all shipments from the API
-  getAllShipments() {
-    console.log('getAllShipments');
-    return this.http.get('/api/shipments')
+  getAllOrders() {
+    console.log('getAllOrders');
+    return this.http.get('/api/all_orders')
       .map(res => res.json());
   }
 }
