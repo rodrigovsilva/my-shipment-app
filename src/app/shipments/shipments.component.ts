@@ -13,8 +13,9 @@ export class ShipmentsComponent implements OnInit {
 
   ngOnInit() {
     // Retrieve posts from the API
-    this.shipmentsService.getAllShipments().subscribe(allShipments => {
-      this.allShipments = allShipments;
+    this.shipmentsService.getAllShipments().subscribe(shipments => {
+      console.log('shipments', shipments);
+      this.allShipments = shipments;
     });
   }
 

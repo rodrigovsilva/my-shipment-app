@@ -3,7 +3,7 @@ const router = express.Router();
 
 // declare axios for making http requests
 const axios = require('axios');
-const API = 'https://localhost:3001';
+const RESOURCE_API = 'http://localhost:3001/shipments';
 
 /* GET api listing. */
 router.get('/', (req, res) => {
@@ -12,13 +12,16 @@ router.get('/', (req, res) => {
 
 // Get all shipments
 router.get('/shipments', (req, res) => {
+  console.log('shipments');
+  //res.status(200).json('{"test":true}');
   // Get shipments from the mock api
   // This should ideally be replaced with a service that connects to MongoDB or another database/resource
-  axios.get('${API}/shipments')
-    .then(shipments => {
-      res.status(200).json(shipments.data);
+  axios.get(RESOURCE_API)
+    .then(orders => {
+      res.status(200).json(orders.data);
     })
     .catch(error => {
+      console.log(error);
       res.status(500).send(error)
     });
 });

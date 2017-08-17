@@ -10,6 +10,7 @@ export class ShipmentsService {
 
   // Get all shipments from the API
   getAllShipments() {
+    console.log('getAllShipments');
     return this.http.get('/api/shipments')
       .map(res => res.json());
   }
