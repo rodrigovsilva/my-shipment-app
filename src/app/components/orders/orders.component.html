@@ -1,0 +1,38 @@
+<div class="orders-container mat-elevation-z8">
+  <md-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <ng-container cdkColumnDef="orderId">
+      <md-header-cell *cdkHeaderCellDef> ID </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.orderId}} </md-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="companyName">
+      <md-header-cell *cdkHeaderCellDef> Company Name </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.companyName}} </md-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="customerAddress">
+      <md-header-cell *cdkHeaderCellDef> Customer Address </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.customerAddress}} </md-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="orderedItem">
+      <md-header-cell *cdkHeaderCellDef>Ordered Item</md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.orderedItem}} </md-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="orderedItem">
+      <md-header-cell *cdkHeaderCellDef>Ordered Item</md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.orderedItem}} </md-cell>
+    </ng-container>
+
+    <md-cell *cdkCellDef="let row"> <button md-raised-button>UPDATE</button></md-cell>
+    <md-cell *cdkCellDef="let row"> <button md-raised-button>DELETE</button></md-cell>
+
+    <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+    <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+  </md-table>
+</div>

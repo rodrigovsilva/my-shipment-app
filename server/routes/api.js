@@ -3,12 +3,12 @@ const router = express.Router();
 
 // declare axios for making http requests
 const axios = require('axios');
-const RESOURCE_API = 'http://localhost:3001/my-shipment-db';
+const RESOURCE_API = 'http://localhost:3001/orders';
 
-/* GET api listing. */
+/* GET api listing. *
 router.get('/', (req, res) => {
   res.send('api works');
-});
+});*/
 
 // Get all orders
 router.get('/all_orders', (req, res) => {
@@ -25,5 +25,18 @@ router.get('/all_orders', (req, res) => {
       res.status(500).send(error)
     });
 });
+
+// Get all orders
+router.route('/order')
+  .get((req, res) => {
+    res.status(200).send('Get a book');
+  })
+  .post((req, res) => {
+    res.status(200).send('Add a book');
+  })
+  .put((req, res) => {
+    res.status(200).send('Update the book');
+  });
+
 
 module.exports = router;
