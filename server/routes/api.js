@@ -26,17 +26,44 @@ router.get('/all_orders', (req, res) => {
     });
 });
 
-// Get all orders
-router.route('/order')
+// Get, update and delete order by id
+router.route('/order/:id')
   .get((req, res) => {
-    res.status(200).send('Get a book');
-  })
-  .post((req, res) => {
-    res.status(200).send('Add a book');
+    axios.get(RESOURCE_API+'?orderId='+req.params.id)
+    .then(orders => {
+      //filtering order by id
+      if(orders && orders.data){
+        let order = orders.data[0];
+        res.status(200).json(order);
+      } else {
+        res.status(200).send('Order '+ req.params.id +' not found');
+      }
+      
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).send(error)
+    });
   })
   .put((req, res) => {
-    res.status(200).send('Update the book');
+    console.log(req.body);
+    axios.put(RESOURCE_API+'/'+req.params.id, req.body)
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).send(error);
+    });
+  })
+  .delete((req, res) => {
+    res.status(200).send('Delete the book' + req.params.id);
   });
 
+// Get all orders
+router.route('/order/')
+  .post((req, res) => {
+    res.status(200).send('Add a book');
+  });
 
 module.exports = router;
