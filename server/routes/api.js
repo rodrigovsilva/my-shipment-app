@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 });*/
 
 // Get all orders
-router.get('/all_orders', (req, res) => {
+router.get('/orders', (req, res) => {
   console.log('orders');
   //res.status(200).json('{"test":true}');
   // Get shipments from the mock api
@@ -29,11 +29,13 @@ router.get('/all_orders', (req, res) => {
 // Get, update and delete order by id
 router.route('/order/:id')
   .get((req, res) => {
-    axios.get(RESOURCE_API+'?orderId='+req.params.id)
+
+    axios.get(RESOURCE_API+'/'+req.params.id)
     .then(orders => {
       //filtering order by id
       if(orders && orders.data){
-        let order = orders.data[0];
+        let order = orders.data;
+        console.log(order);
         res.status(200).json(order);
       } else {
         res.status(200).send('Order '+ req.params.id +' not found');
@@ -46,10 +48,10 @@ router.route('/order/:id')
     });
   })
   .put((req, res) => {
-    console.log(req.body);
     axios.put(RESOURCE_API+'/'+req.params.id, req.body)
     .then(response => {
-      console.log(response);
+      console.log(response.data);
+      res.status(200).json(response.data);
     })
     .catch(error => {
       console.log(error);
@@ -57,7 +59,15 @@ router.route('/order/:id')
     });
   })
   .delete((req, res) => {
-    res.status(200).send('Delete the book' + req.params.id);
+    axios.delete(RESOURCE_API+'/'+req.params.id)
+    .then(response => {
+      console.log(response.data);
+      res.status(200).send('Order '+ req.params.id+' was deleted successfully.');
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).send(error);
+    });
   });
 
 // Get all orders

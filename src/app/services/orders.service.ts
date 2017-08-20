@@ -9,8 +9,8 @@ export class OrdersService {
   constructor(private http: Http) { }
 
   getAllOrders() {
-    console.log('getAllOrders');
-    return this.http.get('/api/all_orders')
+    console.log('orders');
+    return this.http.get('/api/orders')
       .map(res => res.json());
   }
 }

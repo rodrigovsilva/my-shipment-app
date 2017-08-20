@@ -1,5 +1,4 @@
-{
-  "orders": [
+[
     {
         "id": "001",
         "companyName": "SuperTrader",
@@ -48,5 +47,4 @@
         "customerAddress": "Reeperbahn 153",
         "orderedItem": "Inline Skates"
     }
-  ]
-}
+]
