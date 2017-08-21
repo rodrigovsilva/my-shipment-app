@@ -1,8 +1,10 @@
+
 .card {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 .card {
+  font-size: 14px; 
   margin-top: 10px;
   box-sizing: border-box;
   border-radius: 2px;
@@ -10,18 +12,14 @@
 }
 
 .card span.card-title {
-    color: #fff;
-    font-size: 24px;
-    font-weight: 300;
+    font-size: 20px;
+    font-weight: bold;
     text-transform: uppercase;
 }
 
 .card .card-header {
-    color: #C9C9C9;
-    font-size: 24px;
-    font-weight: 300;
-    text-transform: uppercase;
-    padding: 16px;
+  background-color: #f7f7f7;
+  padding: 16px !important;
 }
 
 .card .card-image {
@@ -42,6 +40,7 @@
 }
 .card .card-content {
   padding: 16px;
+  margin: 16px;
   border-radius: 0 0 2px 2px;
   background-clip: padding-box;
   box-sizing: border-box;
@@ -57,13 +56,94 @@
   border-top: 1px solid rgba(160, 160, 160, 0.2);
   padding: 16px;
 }
+
 .card .card-action a {
-  color: #ffab40;
   margin-right: 16px;
   transition: color 0.3s ease;
   text-transform: uppercase;
 }
+
 .card .card-action a:hover {
-  color: #ffd8a6;
+  background-color: rgba(0,133,66, 0.7);
+  transition: background-color 0.5s ease;
   text-decoration: none;
+}
+
+.btn {
+  position: relative;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  
+  background-color: #2ecc71;
+  color: #ecf0f1;
+  
+  transition: background-color .3s;
+}
+
+.btn:hover, .btn:focus {
+  background-color: #27ae60;
+}
+
+.btn > * {
+  position: relative;
+}
+
+.btn span {
+  display: block;
+  padding: 12px 24px;
+}
+
+.btn:before {
+  content: "";
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+  display: block;
+  width: 0;
+  padding-top: 0;
+    
+  border-radius: 100%;
+  
+  background-color: rgba(236, 240, 241, .3);
+  
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.btn:active:before {
+  width: 120%;
+  padding-top: 120%;
+  
+  transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+/* Styles, not important */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.btn.orange {
+  background-color: #e67e22;
+}
+
+.btn.orange:hover, .btn.orange:focus {
+  background-color: #d35400;
+}
+
+.btn.red {
+  background-color: #e74c3c;
+}
+
+.btn.red:hover, .btn.red:focus {
+  background-color: #c0392b;
 }

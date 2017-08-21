@@ -1,0 +1,29 @@
+<div class="container">
+    <form>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="companies">Filtering by Company:</label>
+                <select name="companies" id="companies" ng-model="filter.companyName">
+                  <option value="">---Select---</option>
+                  <option ng-repeat="company in companies" value="{{company}}">{{company}}</option>
+                </select>
+                <tt>{{filter.companyName}}</tt>
+            </div>
+            <div class="col-md-6"><label for="control-label">Filtering by Address: </label></div>
+        </div>
+        <div class="row" *ngFor="let order of orders">
+        <div class="card">
+            <div class="card-header"><span class="card-title">Order {{ order.id }}</span></div>
+            <div class="card-content">
+                <div class="col-md-4"><b>Company Name:</b> {{order.companyName}}</div>
+                <div class="col-md-4"><b>Customer Address</b> {{order.customerAddress}}</div>
+                <div class="col-md-4"><b>Ordered Item:</b> {{order.orderedItem}}</div>
+            </div>
+            <div class="card-action text-right">
+                <a class="btn btn-primary card-link">Update</a>
+                <a class="btn btn-default card-link">Delete</a>
+            </div>
+        </div>
+        </div>
+    </form>
+</div>

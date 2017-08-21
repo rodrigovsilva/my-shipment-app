@@ -1,4 +1,10 @@
-<md-toolbar color="primary">{{title}}</md-toolbar>
-<div fxLayoutAlign="center" [style.padding.px]="16">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">{{title}}</a>
+    </div>
+  </div>
+</nav>
+<div [style.padding.px]="16">
   <app-orders></app-orders>
 </div>

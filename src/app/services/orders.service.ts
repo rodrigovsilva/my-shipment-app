@@ -8,23 +8,28 @@ export class OrdersService {
 
   constructor(private http: Http) { }
 
-  getAllOrders() {
-    return this.http.get('/api/orders')
+  getOrders(filter) {
+    if (filter) {
+      return this.http.post('/api/orders', filter)
       .map(res => res.json());
+    } else{
+      return this.http.get('/api/orders')
+      .map(res => res.json());
+    }
   }
 
   getOrder(id) {
-    return this.http.get('/api/order'+id)
+    return this.http.get('/api/order' + id)
       .map(res => res.json());
   }
 
   updateOrder(order) {
-    return this.http.put('/api/order'+order.id, order)
+    return this.http.put('/api/order' + order.id, order)
       .map(res => res.json());
   }
 
   deleteOrder(id) {
-    return this.http.delete('/api/order/'+id)
+    return this.http.delete('/api/order/' + id)
       .map(res => res.json());
   }
 
