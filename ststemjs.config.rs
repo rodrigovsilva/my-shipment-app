@@ -30,9 +30,6 @@ System.config({
     '@angular/platform-browser-dynamic': 'https://unpkg.com/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
     '@angular/animations/browser': 'https://unpkg.com/@angular/animations/bundles/animations-browser.umd.js',
     '@angular/platform-browser/animations': 'https://unpkg.com/@angular/platform-browser/bundles/platform-browser-animations.umd.js',
-    
-    '@angular/material': 'https://unpkg.com/@angular/material@2.0.0-beta.8/bundles/material.umd.js',
-    '@angular/cdk': 'https://unpkg.com/@angular/cdk@2.0.0-beta.8/bundles/cdk.umd.js',
 
     // Rxjs mapping
     'rxjs': 'https://unpkg.com/rxjs',
