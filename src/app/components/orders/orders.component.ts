@@ -15,7 +15,7 @@ export class OrdersComponent implements OnInit {
   orders:  any = [];
   companies:  any = [];
   addresses:  any = [];
-  filter: Order;
+  filter = new Order();
 
   constructor(private ordersService: OrdersService) { }
 
@@ -25,16 +25,16 @@ export class OrdersComponent implements OnInit {
       this.companies =  new Set(this.orders.map(order => order.companyName));
       this.addresses =  new Set(this.orders.map(order => order.customerAddress));
 
-      console.log('filters', this.companies, this.addresses);
+      console.log(this.filter, this.companies, this.addresses);
     });
   }
-
 }
 
-
-export interface Order {
+export class Order {
   id: string;
   companyName: string;
   customerAddress: string;
   orderedItem: string;
+
+  constructor() { }
 }

@@ -3,11 +3,11 @@
         <div class="row">
             <div class="col-md-6">
                 <label for="companies">Filtering by Company:</label>
-                <select name="companies" id="companies" ng-model="filter.companyName">
-                  <option value="">---Select---</option>
-                  <option ng-repeat="company in companies" value="{{company}}">{{company}}</option>
+                <select class="form-control" name="companies" id="companies" [(ngModel)]="filter.companyName">
+                    <option value="">---All---</option>
+                    <option *ngFor="let company of companies" [ngValue]="company">{{company}}</option>
                 </select>
-                <tt>{{filter.companyName}}</tt>
+                {{filter.companyName}}
             </div>
             <div class="col-md-6"><label for="control-label">Filtering by Address: </label></div>
         </div>
