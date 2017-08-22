@@ -4,6 +4,7 @@ import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
 
 import { OrdersService } from '../../services/orders.service';
+import { Order } from '../../model/order.model';
 
 @Component({
   selector: 'app-orders',
@@ -18,6 +19,7 @@ export class OrdersComponent implements OnInit {
   filter: Order;
   orderIdForEdition: any;
   newOrder: Order;
+  ordersSummary: any;
 
   constructor(private ordersService: OrdersService) { }
 
@@ -27,6 +29,7 @@ export class OrdersComponent implements OnInit {
     this.cancelOrderAdd();
     this.ordersService.getOrders(this.filter).subscribe(orders => {
       this.orders = orders;
+      this.getOrdersSummary(this.orders);
       this.companies =  new Set(this.orders.map(order => order.companyName));
       this.addresses =  new Set(this.orders.map(order => order.customerAddress));
       console.log(this.filter, this.companies, this.addresses);
@@ -93,16 +96,43 @@ export class OrdersComponent implements OnInit {
   cancelOrderAdd() {
     this.newOrder = null;
   }
-}
 
-export class Order {
-  id: string;
-  companyName: string;
-  customerAddress: string;
-  orderedItem: string;
+  getOrdersSummary(orders) {
+    const totalByItem = new Map<String, any>();
 
-  constructor() {
-    this.companyName = '';
-    this.customerAddress = '';
+    this.orders.forEach(order => {
+      if (totalByItem.get(order.orderedItem)) {
+        totalByItem.set(order.orderedItem, totalByItem.get(order.orderedItem) + 1);
+      } else {
+        totalByItem.set(order.orderedItem, 1);
+      }
+    });
+
+    const itemsByTotal = new Map<any, [any]>();
+    totalByItem.forEach((val, key) => {
+      if (itemsByTotal.get(val)) {
+        const itemsName: [any] = itemsByTotal.get(val);
+        itemsName.push(key);
+        itemsByTotal.set(val, itemsName);
+      } else {
+        const itemsName: any = [];
+        itemsName.push(key);
+        itemsByTotal.set(val, itemsName);
+      }
+    });
+
+    const summaryDetails = [];
+    itemsByTotal.forEach((val, key) => {
+      if (key === 1) {
+        summaryDetails.push(key + 'x for the rest');
+      } else {
+        summaryDetails.push(key + 'x ' + val.sort().reverse().filter(function (curVal) {return curVal; }).join(' and '));
+      }
+    });
+
+
+    this.ordersSummary = summaryDetails.sort().reverse().filter(function (val) {return val; }).join(', ');
+    console.log('getOrdersSummary', this.ordersSummary);
   }
 }
+

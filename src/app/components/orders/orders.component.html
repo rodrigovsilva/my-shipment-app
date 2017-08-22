@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row"  *ngIf="newOrder">
+    <div class="row dv-padding" *ngIf="newOrder">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header"><span class="card-title">Adding New Order <b class="text-primary">{{ newOrder.id }}</b></span></div>
@@ -22,13 +22,13 @@
             </div>
         </div>
     </div>
-    <div class="row" *ngIf="!newOrder">
+    <div class="row dv-padding" *ngIf="!newOrder">
         <div class="col-md-12 text-right">
             <a class="btn btn-primary card-link"  (click)="addNewOrder()">Add New Order</a>
         </div>
     </div>
     <br/>
-    <div class="row">
+    <div class="row dv-padding">
         <div class="col-md-6">
             <label for="companies">Filtering by Company:</label>
             <select class="form-control" name="companies" id="companies" [(ngModel)]="filter.companyName" (change)="onCompanySelect()">
@@ -44,7 +44,10 @@
             </select>
         </div>
     </div>
-    <div class="row" *ngFor="let order of orders">
+    <div class="row dv-padding">
+        <div class="col-md-12"><b>Orders Summary:</b> {{ordersSummary}}</div>
+    </div>
+    <div class="row dv-padding" *ngFor="let order of orders">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header"><span class="card-title">Order {{ order.id }}</span></div>
@@ -65,8 +68,9 @@
                 </div>
                 <div class="card-action text-right">
                     <a *ngIf="order.id != orderIdForEdition" class="btn btn-primary card-link" (click)="editOrder(order.id)">Update</a>
+                    <a *ngIf="order.id != orderIdForEdition" class="btn btn-default card-link" (click)="cancelOrderEdition()">Cancel</a>
                     <a *ngIf="order.id == orderIdForEdition" class="btn btn-primary card-link" (click)="saveOrder(order)">Save</a>
-                    <a class="btn btn-default card-link" (click)="deleteOrder(order)">Delete</a>
+                    <a *ngIf="order.id == orderIdForEdition" class="btn btn-default card-link" (click)="deleteOrder(order)">Delete</a>
                 </div>
             </div>
         </div>
