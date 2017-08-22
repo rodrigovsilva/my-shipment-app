@@ -1,10 +1,22 @@
 {
   "orders": [
     {
+      "id": "001",
+      "companyName": "SuperTrader",
+      "customerAddress": "Steindamm 80",
+      "orderedItem": "Macbook"
+    },
+    {
       "id": "002",
       "companyName": "Cheapskates",
       "customerAddress": "Reeperbahn 153",
       "orderedItem": "Macbook"
+    },
+    {
+      "id": "003",
+      "companyName": "MegaCorp",
+      "customerAddress": "Steindamm 80",
+      "orderedItem": "Book \"Guide to Hamburg\""
     },
     {
       "id": "004",

@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import Utils from '../utils/utils';
 
 @Injectable()
 export class OrdersService {
@@ -32,5 +33,13 @@ export class OrdersService {
   addOrder(order) {
     return this.http.post('/api/order/', order)
       .map(res => res.json());
+  }
+
+  getNextOrderId() {
+    return this.getOrders(null).map(orders => {
+      let newOrderId = Math.max.apply(Math, orders.map(order => order.id)) + 1;
+      newOrderId = Utils.padLeft(newOrderId, 3, '0');
+      return newOrderId;
+    });
   }
 }

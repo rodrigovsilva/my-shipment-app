@@ -1,4 +1,33 @@
 <div class="container">
+    <div class="row"  *ngIf="newOrder">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header"><span class="card-title">Adding New Order <b class="text-primary">{{ newOrder.id }}</b></span></div>
+                <div class="card-content">
+                    <div class="col-md-4">
+                        <b>Company Name:</b> 
+                        <input type="text" [(ngModel)]="newOrder.companyName" />
+                    </div>
+                    <div class="col-md-4"><b>Customer Address</b>
+                        <input type="text" [(ngModel)]="newOrder.customerAddress" />
+                    </div>
+                    <div class="col-md-4"><b>Ordered Item:</b>
+                        <input type="text" [(ngModel)]="newOrder.orderedItem" />
+                    </div>
+                </div>
+                <div class="card-action text-right">
+                    <a class="btn btn-primary card-link" (click)="addOrder(newOrder)">Save</a>
+                    <a class="btn btn-default card-link" (click)="cancelOrderAdd(newOrder)">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="!newOrder">
+        <div class="col-md-12 text-right">
+            <a class="btn btn-primary card-link"  (click)="addNewOrder()">Add New Order</a>
+        </div>
+    </div>
+    <br/>
     <div class="row">
         <div class="col-md-6">
             <label for="companies">Filtering by Company:</label>

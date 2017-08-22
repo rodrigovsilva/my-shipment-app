@@ -81,7 +81,15 @@ router.route('/order/:id')
 // add order
 router.route('/order/')
   .post((req, res) => {
-    res.status(200).send('Add a book');
+    axios.post(RESOURCE_API, req.body)
+      .then(response => {
+        console.log(response.data);
+        res.status(200).json(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+      });
   });
 
 module.exports = router;

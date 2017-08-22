@@ -17,12 +17,14 @@ export class OrdersComponent implements OnInit {
   addresses:  any = [];
   filter: Order;
   orderIdForEdition: any;
+  newOrder: Order;
 
   constructor(private ordersService: OrdersService) { }
 
   ngOnInit() {
     console.log('this.filter', this.filter);
     this.filter = new Order;
+    this.cancelOrderAdd();
     this.ordersService.getOrders(this.filter).subscribe(orders => {
       this.orders = orders;
       this.companies =  new Set(this.orders.map(order => order.companyName));
@@ -50,6 +52,7 @@ export class OrdersComponent implements OnInit {
   }
 
   saveOrder(order) {
+    console.log('saveOrder', order);
     this.ordersService.updateOrder(order).subscribe(updatedOrder => {
       this.orderIdForEdition = '';
       this.ngOnInit();
@@ -68,6 +71,27 @@ export class OrdersComponent implements OnInit {
       }
 
     });
+  }
+
+  addNewOrder() {
+    this.newOrder = new Order();
+    this.ordersService.getNextOrderId().subscribe(newOrderId => {
+      this.newOrder.id = newOrderId;
+      this.saveOrder(this.newOrder);
+    });
+  }
+
+  addOrder(order) {
+    console.log('addOrder', order);
+    this.ordersService.addOrder(order).subscribe(newOrder => {
+      this.cancelOrderAdd();
+      this.ngOnInit();
+      console.log('Order ' + newOrder.id + ' was updated successfully');
+    });
+  }
+
+  cancelOrderAdd() {
+    this.newOrder = null;
   }
 }
 
