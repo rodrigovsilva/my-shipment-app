@@ -15,18 +15,18 @@ export class OrdersService {
   }
 
   getOrder(id) {
-    return this.http.get('/api/order' + id)
+    return this.http.get('/api/order/' + id)
       .map(res => res.json());
   }
 
   updateOrder(order) {
-    return this.http.put('/api/order' + order.id, order)
+    return this.http.put('/api/order/' + order.id, order)
       .map(res => res.json());
   }
 
   deleteOrder(id) {
     return this.http.delete('/api/order/' + id)
-      .map(res => res.json());
+      .map(res => res.status);
   }
 
   addOrder(order) {

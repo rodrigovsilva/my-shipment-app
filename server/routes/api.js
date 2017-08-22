@@ -74,7 +74,6 @@ router.route('/order/:id')
   .delete((req, res) => {
     axios.delete(RESOURCE_API+'/'+req.params.id)
     .then(response => {
-      console.log(response.data);
       res.status(200).send('Order '+ req.params.id+' was deleted successfully.');
     })
     .catch(error => {
@@ -83,7 +82,7 @@ router.route('/order/:id')
     });
   });
 
-// Get all orders
+// add order
 router.route('/order/')
   .post((req, res) => {
     res.status(200).send('Add a book');
