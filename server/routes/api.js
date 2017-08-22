@@ -1,14 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+const RESOURCE_API = 'http://localhost:3000/db/orders';
+
 // declare axios for making http requests
 const axios = require('axios');
-const RESOURCE_API = 'http://localhost:3001/orders';
-
-// init database structure
-var fs = require('fs');
-var initialOrders = JSON.parse(fs.readFileSync('./server/data/initial-db.json'));
-fs.writeFileSync('./server/data/my-shipment-db.json', JSON.stringify(initialOrders));
 
 // Filter orders
 router.post('/orders', (req, res) => {

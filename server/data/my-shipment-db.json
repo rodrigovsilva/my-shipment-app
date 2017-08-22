@@ -7,12 +7,6 @@
       "orderedItem": "Macbook"
     },
     {
-      "id": "003",
-      "companyName": "MegaCorp",
-      "customerAddress": "Steindamm 80",
-      "orderedItem": "Book \"Guide to Hamburg\""
-    },
-    {
       "id": "004",
       "companyName": "SuperTrader",
       "customerAddress": "Sternstrasse 125",

@@ -23,10 +23,6 @@ export class OrdersComponent implements OnInit {
   ngOnInit() {
     console.log('this.filter', this.filter);
     this.filter = new Order;
-    this.init();  
-  }
-
-  init(){
     this.ordersService.getOrders(this.filter).subscribe(orders => {
       this.orders = orders;
       this.companies =  new Set(this.orders.map(order => order.companyName));
@@ -35,42 +31,42 @@ export class OrdersComponent implements OnInit {
     });
   }
 
-  onCompanySelect(){
+  onCompanySelect() {
     this.filter.customerAddress = '';
     this.ordersService.getOrders(this.filter).subscribe(orders => {
       this.orders = orders;
     });
   }
 
-  onAddressSelect(){
+  onAddressSelect() {
     this.filter.companyName = '';
     this.ordersService.getOrders(this.filter).subscribe(orders => {
       this.orders = orders;
     });
   }
 
-  editOrder(id){
+  editOrder(id) {
     this.orderIdForEdition = id;
   }
 
-  saveOrder(order){
-    this.ordersService.updateOrder(order).subscribe(order => {
+  saveOrder(order) {
+    this.ordersService.updateOrder(order).subscribe(updatedOrder => {
       this.orderIdForEdition = '';
-      this.init();
-      console.log('Order '+ order.id +' was updated successfully');
+      this.ngOnInit();
+      console.log('Order ' + updatedOrder.id + ' was updated successfully');
     });
   }
 
-  deleteOrder(order){
+  deleteOrder(order) {
     this.ordersService.deleteOrder(order.id).subscribe(status => {
-      
-      if(status === 200){
-        console.log('Order '+ order.id +' was updated successfully');        
-        this.init();
+
+      if(status === 200) {
+        console.log('Order ' + order.id + ' was updated successfully');
+        this.ngOnInit();
       } else {
-        console.log('Order '+ order.id +' was not updated.');        
+        console.log('Order ' + order.id + ' was not updated.');
       }
-      
+
     });
   }
 }
@@ -81,7 +77,7 @@ export class Order {
   customerAddress: string;
   orderedItem: string;
 
-  constructor() { 
+  constructor() {
     this.companyName = '';
     this.customerAddress = '';
   }
