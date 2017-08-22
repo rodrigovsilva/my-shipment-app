@@ -9,13 +9,9 @@ export class OrdersService {
   constructor(private http: Http) { }
 
   getOrders(filter) {
-    if (filter) {
+    console.log('service.getOrders', filter);
       return this.http.post('/api/orders', filter)
       .map(res => res.json());
-    } else{
-      return this.http.get('/api/orders')
-      .map(res => res.json());
-    }
   }
 
   getOrder(id) {

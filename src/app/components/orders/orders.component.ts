@@ -15,17 +15,32 @@ export class OrdersComponent implements OnInit {
   orders:  any = [];
   companies:  any = [];
   addresses:  any = [];
-  filter = new Order();
+  filter: Order;
 
   constructor(private ordersService: OrdersService) { }
 
   ngOnInit() {
+    console.log('this.filter', this.filter);
+    this.filter = new Order;
     this.ordersService.getOrders(this.filter).subscribe(orders => {
       this.orders = orders;
       this.companies =  new Set(this.orders.map(order => order.companyName));
       this.addresses =  new Set(this.orders.map(order => order.customerAddress));
-
       console.log(this.filter, this.companies, this.addresses);
+    });
+  }
+
+  onCompanySelect(){
+    this.filter.customerAddress = '';
+    this.ordersService.getOrders(this.filter).subscribe(orders => {
+      this.orders = orders;
+    });
+  }
+
+  onAddressSelect(){
+    this.filter.companyName = '';
+    this.ordersService.getOrders(this.filter).subscribe(orders => {
+      this.orders = orders;
     });
   }
 }
@@ -36,5 +51,8 @@ export class Order {
   customerAddress: string;
   orderedItem: string;
 
-  constructor() { }
+  constructor() { 
+    this.companyName = '';
+    this.customerAddress = '';
+  }
 }
