@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, inject } from '@angular/core/testing';
-
+import { HttpModule } from '@angular/http';
 import { OrdersService } from './orders.service';
 import { OrdersComponent } from '../components/orders/orders.component';
 import { Order } from '../model/order.model';

@@ -4,9 +4,11 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
+    "start-backend": "node server.js",
+    "start-dev": "ng serve --proxy-config proxy.conf.json",
     "start": "ng build && node server.js",
-    "build": "ng build && node server.js",
-    "test": "ng test",
+    "build": "ng build --watch",
+    "test": "ng test --proxy-config proxy.conf.json",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
