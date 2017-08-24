@@ -21,7 +21,10 @@ export class OrdersComponent implements OnInit {
   newOrder: Order;
   ordersSummary: any;
 
-  constructor(private ordersService: OrdersService) { }
+  constructor(private ordersService: OrdersService) { 
+    this.orderIdForEdition = null;
+  }
+
 
   ngOnInit() {
     console.log('this.filter', this.filter);
@@ -80,7 +83,7 @@ export class OrdersComponent implements OnInit {
     this.newOrder = new Order();
     this.ordersService.getNextOrderId().subscribe(newOrderId => {
       this.newOrder.id = newOrderId;
-      this.saveOrder(this.newOrder);
+      //this.saveOrder(this.newOrder);
     });
   }
 
@@ -95,6 +98,10 @@ export class OrdersComponent implements OnInit {
 
   cancelOrderAdd() {
     this.newOrder = null;
+  }
+
+  cancelOrderEdition (){ 
+    this.orderIdForEdition = null;
   }
 
   getOrdersSummary(orders) {

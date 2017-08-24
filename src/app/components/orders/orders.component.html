@@ -67,10 +67,10 @@
                     </div>
                 </div>
                 <div class="card-action text-right">
-                    <a *ngIf="order.id != orderIdForEdition" class="btn btn-primary card-link" (click)="editOrder(order.id)">Update</a>
-                    <a *ngIf="order.id != orderIdForEdition" class="btn btn-default card-link" (click)="cancelOrderEdition()">Cancel</a>
+                    <a *ngIf="order.id != orderIdForEdition" class="btn btn-primary card-link" (click)="editOrder(order.id)">Edit</a>
+                    <a *ngIf="order.id != orderIdForEdition" class="btn btn-default card-link" (click)="deleteOrder(order)">Delete</a>
                     <a *ngIf="order.id == orderIdForEdition" class="btn btn-primary card-link" (click)="saveOrder(order)">Save</a>
-                    <a *ngIf="order.id == orderIdForEdition" class="btn btn-default card-link" (click)="deleteOrder(order)">Delete</a>
+                    <a *ngIf="order.id == orderIdForEdition" class="btn btn-default card-link" (click)="cancelOrderEdition()">Cancel</a>
                 </div>
             </div>
         </div>
