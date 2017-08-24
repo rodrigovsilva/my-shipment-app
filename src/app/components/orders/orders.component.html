@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row dv-padding" *ngIf="newOrder">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header"><span class="card-title">Adding New Order <b class="text-primary">{{ newOrder.id }}</b></span></div>
+                <div class="card-content">
+                    <div class="col-md-4">
+                        <b>Company Name:</b> 
+                        <input type="text" [(ngModel)]="newOrder.companyName" />
+                    </div>
+                    <div class="col-md-4"><b>Customer Address</b>
+                        <input type="text" [(ngModel)]="newOrder.customerAddress" />
+                    </div>
+                    <div class="col-md-4"><b>Ordered Item:</b>
+                        <input type="text" [(ngModel)]="newOrder.orderedItem" />
+                    </div>
+                </div>
+                <div class="card-action text-right">
+                    <a class="btn btn-primary card-link" (click)="addOrder(newOrder)">Save</a>
+                    <a class="btn btn-default card-link" (click)="cancelOrderAdd(newOrder)">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row dv-padding" *ngIf="!newOrder">
+        <div class="col-md-12 text-right">
+            <a class="btn btn-primary card-link"  (click)="addNewOrder()">Add New Order</a>
+        </div>
+    </div>
+    <br/>
+    <div class="row dv-padding">
+        <div class="col-md-6">
+            <label for="companies">Filtering by Company:</label>
+            <select class="form-control" name="companies" id="companies" [(ngModel)]="filter.companyName" (change)="onCompanySelect()">
+                <option value="">---All---</option>
+                <option *ngFor="let company of companies" [ngValue]="company">{{company}}</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="control-label">Filtering by Address: </label>
+            <select class="form-control" name="addresses" id="addresses" [(ngModel)]="filter.customerAddress" (change)="onAddressSelect()">
+                <option value="">---All---</option>
+                <option *ngFor="let address of addresses" [ngValue]="address">{{address}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row dv-padding">
+        <div class="col-md-12"><b>Orders Summary:</b> {{ordersSummary}}</div>
+    </div>
+    <div class="row dv-padding" *ngFor="let order of orders">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header"><span class="card-title">Order {{ order.id }}</span></div>
+                <div class="card-content">
+                    <div class="col-md-4">
+                        <b>Company Name:</b> 
+                        <span *ngIf="order.id != orderIdForEdition">{{order.companyName}}</span>
+                        <input *ngIf="order.id == orderIdForEdition" type="text" [(ngModel)]="order.companyName" />
+                    </div>
+                    <div class="col-md-4"><b>Customer Address</b>
+                        <span *ngIf="order.id != orderIdForEdition">{{order.customerAddress}}</span>
+                        <input *ngIf="order.id == orderIdForEdition" type="text" [(ngModel)]="order.customerAddress" />
+                    </div>
+                    <div class="col-md-4"><b>Ordered Item:</b>
+                        <span *ngIf="order.id != orderIdForEdition">{{order.orderedItem}}</span>
+                        <input *ngIf="order.id == orderIdForEdition" type="text" [(ngModel)]="order.orderedItem" />
+                    </div>
+                </div>
+                <div class="card-action text-right">
+                    <a *ngIf="order.id != orderIdForEdition" class="btn btn-primary card-link" (click)="editOrder(order.id)">Edit</a>
+                    <a *ngIf="order.id != orderIdForEdition" class="btn btn-default card-link" (click)="deleteOrder(order)">Delete</a>
+                    <a *ngIf="order.id == orderIdForEdition" class="btn btn-primary card-link" (click)="saveOrder(order)">Save</a>
+                    <a *ngIf="order.id == orderIdForEdition" class="btn btn-default card-link" (click)="cancelOrderEdition()">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

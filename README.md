@@ -2,8 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.0.
 
-## Development server
+## Install App
+Run `npm install` to install all dependencies of this app.
 
+## Starting App
+Run `npm run start` and navigate to `http://localhost:3000/`. I will use the application like production mode.
+
+
+### For Developers 
+## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
@@ -16,17 +23,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Mock Server
 
-Run `json-server -p 3001 ./server/data/shipments.json` to mock some database with json-server
+Run `json-server -p 3001 ./server/data/shipments.json` to mock some database with json-server, but if you use `npm run start` you don't need to run this server standalone.
 
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
 
 ## Further help
 

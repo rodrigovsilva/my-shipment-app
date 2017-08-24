@@ -1,0 +1,52 @@
+{
+    "orders": [
+      {
+          "id": "001",
+          "companyName": "SuperTrader",
+          "customerAddress": "Steindamm 80",
+          "orderedItem": "Macbook"
+      },
+      {
+          "id": "002",
+          "companyName": "Cheapskates",
+          "customerAddress": "Reeperbahn 153",
+          "orderedItem": "Macbook"
+      },
+      {
+          "id": "003",
+          "companyName": "MegaCorp",
+          "customerAddress": "Steindamm 80",
+          "orderedItem": "Book \"Guide to Hamburg\""
+      },
+      {
+          "id": "004",
+          "companyName": "SuperTrader",
+          "customerAddress": "Sternstrasse 125",
+          "orderedItem": "Book \"Cooking 101\""
+      },
+      {
+          "id": "005",
+          "companyName": "SuperTrader",
+          "customerAddress": "Ottenser Hauptstrasse 24",
+          "orderedItem": "Inline Skates"
+      },
+      {
+          "id": "006",
+          "companyName": "MegaCorp",
+          "customerAddress": "Reeperbahn 153",
+          "orderedItem": "Playstation"
+      },
+      {
+          "id": "007",
+          "companyName": "Cheapskates",
+          "customerAddress": "Lagerstrasse 11",
+          "orderedItem": "Flux compensator"
+      },
+      {
+          "id": "008",
+          "companyName": "SuperTrader",
+          "customerAddress": "Reeperbahn 153",
+          "orderedItem": "Inline Skates"
+      }
+    ]
+  }
